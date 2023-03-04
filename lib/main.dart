@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:rive/rive.dart';
 
 void main() {
   runApp(MaterialApp(home: SimpleAnimation()));
@@ -12,25 +11,44 @@ class SimpleAnimation extends StatelessWidget {
   Widget build(BuildContext context) {
     const title = 'Family';
     return Scaffold(
+      backgroundColor: Colors.blueAccent,
       appBar: AppBar(
         title: const Text(title),
-        backgroundColor: Colors.cyanAccent,
+        backgroundColor: Colors.lightBlueAccent,
       ),
       body: ListView(
+        physics: const AlwaysScrollableScrollPhysics(),
+        scrollDirection: Axis.vertical,
         children: <Widget>[
-          Container(
-            height: 50,
-            child: Center(
-              child: Text('Nice'),
-            ),
+          ProfileCard(
+            name: 'Lim',
+            age: 31,
+            imageUrl: 'lib/assets/lim.png',
           ),
-          Container(
-            height: 100,
-            child: Center(
-              child: RiveAnimation.network(
-                'https://cdn.rive.app/animations/vehicles.riv',
-              ),
-            ),
+          ProfileCard(
+            name: 'Yeseul',
+            age: 33,
+            imageUrl: 'lib/assets/yeseul.png',
+          ),
+          ProfileCard(
+            name: 'Joana',
+            age: 6,
+            imageUrl: 'lib/assets/joana.png',
+          ),
+          ProfileCard(
+            name: 'Lois',
+            age: 5,
+            imageUrl: 'lib/assets/lois.png',
+          ),
+          ProfileCard(
+            name: 'Joel',
+            age: 3,
+            imageUrl: 'lib/assets/joel.png',
+          ),
+          ProfileCard(
+            name: 'Boas',
+            age: 0,
+            imageUrl: 'lib/assets/boas.png',
           ),
         ],
       ),
@@ -38,21 +56,33 @@ class SimpleAnimation extends StatelessWidget {
   }
 }
 
-class Profile extends StatelessWidget {
+class ProfileCard extends StatelessWidget {
   final String name;
   final int age;
-  final Image image;
+  final String imageUrl;
 
-  const Profile({
+  const ProfileCard({
     Key? key,
     required this.name,
     required this.age,
-    required this.image,
+    required this.imageUrl,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
-    throw UnimplementedError();
+    return Card(
+      child: ListTile(
+        splashColor: Colors.amberAccent,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(0.0)),
+        leading: CircleAvatar(
+          backgroundImage: Image.asset(imageUrl).image,
+        ),
+        title: Text(name),
+        subtitle: Text('Alter: ' + age.toString()),
+        enableFeedback: true,
+        trailing: Icon(Icons.abc_outlined),
+        onTap: () => {},
+      ),
+    );
   }
 }
