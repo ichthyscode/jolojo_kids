@@ -10,62 +10,64 @@ class SimpleAnimation extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     const title = 'Family';
-    return Scaffold(
-      backgroundColor: Colors.blueAccent,
-      appBar: AppBar(
-        title: const Text(title),
-        backgroundColor: Colors.lightBlueAccent,
+    return MaterialApp(
+      title: 'Family',
+      theme: ThemeData(
+        primarySwatch: Colors.lightGreen,
       ),
-      body: NestedScrollView(
-        floatHeaderSlivers: true,
-        headerSliverBuilder: (context, innerBoxIsScrolled) => [
-          const SliverAppBar(
-            expandedHeight: 240,
-            flexibleSpace: FlexibleSpaceBar(
-              title: Text('Wow'),
-              background: Image(
-                image: AssetImage('lib/assets/roof.jpg'),
-                fit: BoxFit.cover,
+      home: Scaffold(
+        backgroundColor: Colors.blueAccent,
+        body: NestedScrollView(
+          floatHeaderSlivers: true,
+          headerSliverBuilder: (context, innerBoxIsScrolled) => [
+            const SliverAppBar(
+              expandedHeight: 240,
+              flexibleSpace: FlexibleSpaceBar(
+                title: Text('Wow'),
+                background: Image(
+                  image: AssetImage('lib/assets/roof.jpg'),
+                  fit: BoxFit.cover,
+                ),
               ),
-            ),
-            floating: true,
-          )
-        ],
-        body: ListView(
-          physics: const AlwaysScrollableScrollPhysics(),
-          scrollDirection: Axis.vertical,
-          children: <Widget>[
-            ProfileCard(
-              name: 'Lim',
-              age: 31,
-              imageUrl: 'lib/assets/lim.png',
-            ),
-            ProfileCard(
-              name: 'Yeseul',
-              age: 33,
-              imageUrl: 'lib/assets/yeseul.png',
-            ),
-            ProfileCard(
-              name: 'Joana',
-              age: 6,
-              imageUrl: 'lib/assets/joana.png',
-            ),
-            ProfileCard(
-              name: 'Lois',
-              age: 5,
-              imageUrl: 'lib/assets/lois.png',
-            ),
-            ProfileCard(
-              name: 'Joel',
-              age: 3,
-              imageUrl: 'lib/assets/joel.png',
-            ),
-            ProfileCard(
-              name: 'Boas',
-              age: 0,
-              imageUrl: 'lib/assets/boas.png',
-            ),
+              floating: true,
+            )
           ],
+          body: ListView(
+            physics: const AlwaysScrollableScrollPhysics(),
+            scrollDirection: Axis.vertical,
+            children: <Widget>[
+              ProfileCard(
+                name: 'Lim',
+                age: 31,
+                imageUrl: 'lib/assets/lim.png',
+              ),
+              ProfileCard(
+                name: 'Yeseul',
+                age: 33,
+                imageUrl: 'lib/assets/yeseul.png',
+              ),
+              ProfileCard(
+                name: 'Joana',
+                age: 6,
+                imageUrl: 'lib/assets/joana.png',
+              ),
+              ProfileCard(
+                name: 'Lois',
+                age: 5,
+                imageUrl: 'lib/assets/lois.png',
+              ),
+              ProfileCard(
+                name: 'Joel',
+                age: 3,
+                imageUrl: 'lib/assets/joel.png',
+              ),
+              ProfileCard(
+                name: 'Boas',
+                age: 0,
+                imageUrl: 'lib/assets/boas.png',
+              ),
+            ],
+          ),
         ),
       ),
     );
